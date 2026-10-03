@@ -13,6 +13,9 @@ import { legacy_createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import reducer from '../state/reducer'
+import { installDemoApi } from '../demoApi'
+
+if (process.env.DEMO) installDemoApi()
 
 // REDUX STORE
 let store
@@ -25,7 +28,7 @@ resetStore()
 export default function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_PATH}>
         <Message />
         <h1>Advanced State</h1>
         <nav>

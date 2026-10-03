@@ -5,6 +5,7 @@
     "dev": "fkill :9000 :3000 -s && concurrently \"npm:backend\" \"npm:frontend\"",
     "test": "cross-env NODE_ENV=testing jest --watch",
     "webpack": "cross-env NODE_ENV=production webpack",
+    "build:demo": "cross-env NODE_ENV=production DEMO=true PUBLIC_PATH=/web-sprint-challenge-advanced-state-Wheel-Redux/ webpack && cp dist/index.html dist/404.html",
     "heroku-postbuild": "npm run webpack",
     "frontend": "webpack serve --open",
     "backend": "node index.js",

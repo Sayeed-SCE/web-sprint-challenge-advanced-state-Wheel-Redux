@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 const path = require('path')
 
 const DEVELOPMENT = 'development'
@@ -26,13 +27,18 @@ const config = {
   mode: ENV,
   output: {
     filename: BUNDLE_FILE,
-    publicPath: '/',
+    // Set to /<repo>/ for GitHub Pages by the build:demo script
+    publicPath: process.env.PUBLIC_PATH || '/',
     path: path.resolve(__dirname, DIST_FOLDER),
   },
   devtool: SOURCE_MAP,
   plugins: [
     new HtmlWebpackPlugin({
       template: INDEX_HTML_PATH,
+    }),
+    new webpack.DefinePlugin({
+      'process.env.DEMO': JSON.stringify(process.env.DEMO || ''),
+      'process.env.PUBLIC_PATH': JSON.stringify(process.env.PUBLIC_PATH || '/'),
     }),
   ],
   devServer: {
