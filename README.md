@@ -1,5 +1,7 @@
 # Wheel & Quiz (Redux)
 
+**[▶ Live demo](https://sayeed-sce.github.io/web-sprint-challenge-advanced-state-Wheel-Redux/)**: runs entirely in the browser; API responses are served by a built-in demo mode that uses the same logic as the Express server.
+
 A three-page React app with all of its state managed in **Redux**: a spinning wheel, a two-answer quiz that loads questions from an API, and a form for adding new quiz questions.
 
 ## Pages
@@ -33,6 +35,14 @@ npm install
 npm run dev     # API on http://localhost:9000, app on http://localhost:3000
 npm test
 ```
+
+## Deploying the demo
+
+```bash
+npm run build:demo   # static build for GitHub Pages
+```
+
+The output is published to the `gh-pages` branch.
 
 ---
 
